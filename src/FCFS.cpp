@@ -21,6 +21,8 @@ int main(){
     
     //sort by arrival time- ascending order
     sort(processes.begin(), processes.end(), [](const Process& a, const Process& b){
+        if(a.arrival_time==b.arrival_time)
+            return a.id<b.id;
         return a.arrival_time<b.arrival_time;
     });
 
