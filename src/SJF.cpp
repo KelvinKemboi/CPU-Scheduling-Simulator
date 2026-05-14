@@ -20,6 +20,16 @@ int main(){
     int n=processes.size();
     int current_time=0;
     int completed=0;
+    
+    vector<bool> done(n, false);
+    while(completed<n){
+        int shortest_p=-1; //candidate process;
+        for(int i=0;i<n;i++){
+            if(done[i]) continue; //skip completed processes
+            if(processes[i].arrival_time>current_time) continue; //skip unarrived processes
+            if(shortest==-1 || processes[i].burst_time<processes[shortest].burst_time) shortest=i; //update candidate process
 
+        }
+    }
     return 0;
 }
