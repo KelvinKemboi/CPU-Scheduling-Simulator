@@ -1,6 +1,7 @@
 #include <iostream>
 #include <algorithm>
 #include <vector>
+#include <climits>
 using namespace std;
 
 struct Process{
@@ -28,8 +29,21 @@ int main(){
             if(done[i]) continue; //skip completed processes
             if(processes[i].arrival_time>current_time) continue; //skip unarrived processes
             if(shortest==-1 || processes[i].burst_time<processes[shortest].burst_time) shortest=i; //update candidate process
-
         }
+        if(shortest_p==-1){
+           int next_arrival=INT_MAX; //start with max integer value
+           
+           for(int i=0;i<n;i++){
+                //find earliest arrival for uncompleted processes
+                if(!done[i]){
+                    next_arrival=min(next_arrival, processes[i].arrival_time);
+                }
+           }
+           //jump to that arrival time
+           current_time=arrival_time;
+           continue;
+        }
+        
     }
     return 0;
 }
